@@ -1,7 +1,5 @@
-
-
-
 from typing import Sequence
+
 
 
 def somme(nombres : Sequence[int]) -> int:
@@ -16,10 +14,15 @@ def somme(nombres : Sequence[int]) -> int:
 def double(nombres : Sequence[int]) -> Sequence[int]:
     resultat : list[int] = []
     
+    
     for nombre in nombres:
         resultat.append(nombre * 2)
         
     return resultat
+
+
+
+
 
 
 

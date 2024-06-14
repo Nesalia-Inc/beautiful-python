@@ -75,7 +75,7 @@ class Compte:
     @classmethod
     def create(cls, email : str, mdp : str) -> "Compte":
         if len(mdp) < 8:
-            raise ValueError
+            raise ValueError("Le mot de passe doit avoir au moins 8 caractères")
         
         return cls(email, mdp)
     
@@ -92,7 +92,7 @@ class Utilisateur:
 if __name__ == '__main__':
     
     jean = Personne.create("Jean", "0701020304", Adresse(18, "Rue du Roi", 75000))
-    compte = Compte("jean@gmail.com", "1234")
+    compte = Compte.create("jean@gmail.com", "123456789")
     utilisateur = Utilisateur(jean, compte)
     
     print(utilisateur)

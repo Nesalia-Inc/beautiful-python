@@ -4,7 +4,8 @@ from datetime import datetime
 
 
 class Permissions(Enum):
-    pass
+    READ_MESSAGES = auto()
+    WRITE_MESSAGES  = auto()
 
 
 @dataclass

@@ -1,11 +1,16 @@
+
+
+
 class Personne:
-    def __init__(self, nom, age):
+    def __init__(self, nom : str, age : int) -> None:
         self.nom = nom
         self.age = age
 
-    def afficher_info(self):
+    def afficher_info(self) -> None:
         print(f"Nom: {self.nom}")
         print(f"Age: {self.age}")
+
+
 
 class PersonneFactory:
     """
@@ -15,8 +20,13 @@ class PersonneFactory:
     """
     
     @staticmethod
-    def creer_personne(nom, age):
+    def creer_personne(nom : str, age : int) -> Personne:
         # TODO: Ajouter la validation des données ici
+        if len(nom) < 2:
+            raise ValueError("Le nom doit avoir plus d'un caractère")
+        if age <= 0:
+            raise ValueError("L'âge ne peut pas être nul")
+        
         return Personne(nom, age)
 
 

@@ -17,23 +17,14 @@ class Direction(Enum):
     GAUCHE = auto()
     DROITE = auto()
 
-
-class Entite(Protocol):
-    position : Coordonnees
-    
-    def deplacer(self) -> None: ...
-    def attaquer(self) -> None: ...
-    
-    
     
 class Joueur:
     def __init__(self) -> None:
         self.position = Coordonnees(0, 0)
-        self.direction = Direction.HAUT
         
         
-    def deplacer(self) -> None:    
-        match self.direction:
+    def deplacer(self, direction) -> None:    
+        match direction:
             case Direction.HAUT: 
                 self.position.y += 1
             case Direction.BAS: 
@@ -44,8 +35,8 @@ class Joueur:
                 self.position.x += 1
                 
                 
-    def attaquer(self) -> None:
-        print("Le joueur attaque !")
+    def attaquer(self) -> str:
+        return "Le joueur attaque !"
         
         
 class Monstre:
@@ -58,10 +49,20 @@ class Monstre:
         self.position.y += random.choice([-1, 1])
                 
                 
-    def attaquer(self) -> None:
-        print("Le joueur attaque !")
+    def attaquer(self) -> str:
+        return "Le monstre attaque !"
         
         
         
-def deplacer(entite : Entite) -> None:
-    entite.deplacer()
+if __name__ == '__main__':
+    joueur = Joueur()
+    monstre = Monstre()
+
+    joueur.deplacer("haut")
+    monstre.deplacer()
+
+    print(joueur.position)  
+    print(monstre.position)  
+
+    print(joueur.attaquer())  # "Le joueur attaque!"
+    print(monstre.attaquer())  # "Le monstre attaque!"

@@ -1,14 +1,18 @@
+
+
+
+
 # Définition de la classe Personne
 class Personne:
     # Constructeur de la classe Personne
-    def __init__(self, nom, age):
+    def __init__(self, nom : str, age : int) -> None:
         # Initialise l'attribut nom
         self.nom = nom
         # Initialise l'attribut age
         self.age = age
 
     # Méthode pour afficher les informations de la personne
-    def afficher_info(self):
+    def afficher_info(self) -> None:
         # Affiche le nom de la personne
         print(f"Nom: {self.nom}")
         # Affiche l'âge de la personne
