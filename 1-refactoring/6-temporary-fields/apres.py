@@ -1,5 +1,4 @@
 import random
-from typing import Protocol
 from dataclasses import dataclass
 from enum import Enum, auto
 

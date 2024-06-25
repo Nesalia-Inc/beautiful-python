@@ -36,7 +36,7 @@ class Monstre:
 
 
 
-class ImmuableMonstre(Protocol):
+class ImmutableMonstre(Protocol):
     @property
     def vie(self) -> int: ...
     @property
@@ -44,7 +44,7 @@ class ImmuableMonstre(Protocol):
     
     
     
-def afficher(monstre : ImmuableMonstre) -> None:
+def afficher(monstre : ImmutableMonstre) -> None:
     print(f"Le monstre a actuellement {monstre.vie} de vie et {monstre.attaque} d'attaque.")
 
 

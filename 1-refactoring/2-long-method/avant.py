@@ -1,27 +1,59 @@
+def process_students(students: list[dict], subject: str) -> dict:
+    total = 0
+    count = 0
+    best_student = None
+    highest_score = 0
+    summary = ""
+
+    for student in students:
+        if subject in student['grades']:
+            score = student['grades'][subject]
+            total += score
+            count += 1
+            if score > highest_score:
+                highest_score = score
+                best_student = student['name']
+
+    average = total / count if count > 0 else 0
+
+    summary += f"Average score in {subject}: {average:.2f}\n"
+    summary += f"Best student in {subject}: {best_student} with score {highest_score}\n"
+
+    return {
+        'average': average,
+        'best_student': best_student,
+        'highest_score': highest_score,
+        'summary': summary
+    }
 
 
 
-# Cette fonction semble petite mais il y a beaucoup de problèmes 
-# Déjà, elle a plusieurs responsabilités :
-# 1. Récupérer uniquement les nombres pairs 
-# 2. Faire le double des nombres 
-# 3. Faire la somme de tous ces nombres
-def somme_double_pairs(nombres : list[int]) -> int:
-    resultat = 0
-    
-    for nombre in nombres:
-        
-        # On peut créer des fonctions qui s'occupent des ces tâches 
-        # Même si ça rend le code moins performant
-        # On aurait du O(3n) au lieu de O(n + 3) environ mais
-        # Le code serait plus simple à comprendre.
-        if nombre % 2 == 0:
-            resultat += nombre * 2
-            
-    return resultat
+if __name__ == '__main__':
+    students = [
+        {
+            'name': 'Alice',
+            'grades': {
+                'math': 85,
+                'science': 92,
+                'literature': 78
+            }
+        },
+        {
+            'name': 'Bob',
+            'grades': {
+                'math': 90,
+                'science': 88,
+                'literature': 82
+            }
+        },
+        {
+            'name': 'Charlie',
+            'grades': {
+                'math': 95,
+                'science': 85,
+                'literature': 80
+            }
+        }
+    ]
 
-
-# Alors bien sûr, ici le code n'est pas horrible et reste simple. 
-# Dans ce cas, si le projet est assez court, tu peux laisser le code comme il est.
-# Mais si tu vois d'autres fonctions du projet qui cherche de nombres pairs ou 
-# fais le double des nombres d'une liste, tu peux extraire ces fonctions. 
+    print(process_students(students, "math"))

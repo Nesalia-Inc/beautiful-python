@@ -26,6 +26,9 @@ class Ville:
     
     @habitants.setter
     def habitants(self, nouveaux_habitants : int) -> None:
+        if nouveaux_habitants < 0:
+            raise ValueError("Le nom d'habitants ne peut pas être négatif")
+        
         self.__habitants = nouveaux_habitants
     
     

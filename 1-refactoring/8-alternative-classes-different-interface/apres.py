@@ -20,7 +20,7 @@ class Animal(ABC):
 class Chien(Animal):
     
     def bruit(self):
-        return "Aboyer"
+        return "Woof!"
     
     def se_deplacer(self):
         return "Courir"
@@ -29,7 +29,7 @@ class Chien(Animal):
 class Chat(Animal):
     
     def bruit(self):
-        return "Miauler"
+        return "Miaou!"
     
     def se_deplacer(self):
         return "Marcher"
@@ -44,3 +44,13 @@ def faire_se_deplacer(animal: Animal):
     print(animal.se_deplacer())
 
 
+if __name__ == '__main__':
+    chien = Chien("Médor", 12, 15.3)
+    chat = Chat("Garfield", 4, 2.3)
+    
+    faire_du_bruit(chien)
+    faire_du_bruit(chat)
+    
+    faire_se_deplacer(chien)
+    faire_se_deplacer(chat)
+    
